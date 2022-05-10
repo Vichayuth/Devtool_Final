@@ -23,7 +23,7 @@ app.post('/users/create', async (req, res) => {
     console.log(user)
     const client = new mongodb.MongoClient(uri);
     await client.connect();
-    await client.db("mydb").collection("users").insertOne({
+    await client.db("mydb").collection("course").insertOne({
         id: parseInt(user.id),
         fname: user.fname,
         lname: user.lname,
@@ -40,10 +40,10 @@ app.post('/users/create', async (req, res) => {
 
 })
 
-app.get('/users', async (req, res) => {
+app.get('/course', async (req, res) => {
     const client = new mongodb.MongoClient(uri);
     await client.connect();
-    const users = await client.db("mydb").collection("users").find({}).toArray()
+    const users = await client.db("mydb").collection("course").find({}).toArray()
     await client.close();
     res.status(200).send(users)
 })

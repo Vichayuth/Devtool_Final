@@ -16,15 +16,8 @@ function Profile() {
     const [email, setEmail] = useState("")
     const [avatar, setAvatar] = useState("")
     const [_id, set_Id] = useState("")
-    useEffect(() => {
-        getUser()
-      }, [])
-    function getUser() {
-        axios.get('http://localhost:3001/users', {crossdomain: true})
-        .then(response => {
-            setUser(response.data)
-        })
-    }
+
+
 
     function addUser() {
         if(user.filter((user) => user.id.toString() === id).length !== 0){
@@ -57,12 +50,11 @@ function Profile() {
 
     return(
         <>
-        <div style={{display:'grid',justifyContent:'center'}}>
+        <div style={{display:'grid',justifyContent:'center', padding:'5px'}}>
             <h1 style={{textAlign:'center'}}> ระบบรับสมัครนักศึกษา </h1>
            <Link to='/'> <button>ค้นหาหลักสูตร</button></Link>
 
            <div style={{margin:'10%'}}>
-           <h3 style={{textAlign:'center'}}> ค้นหาหลักสูตรที่ต้องการ </h3>
 
            <form style={{display:'grid',justifyContent:'center'}}>
            
